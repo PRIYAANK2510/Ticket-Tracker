@@ -1,0 +1,11 @@
+header {
+  text-align: center;
+  background-color: hsl(190, 50%, 8%);
+  & h1 {
+    text-transform: capitalize;
+    color: hsl(190, 50%, 40%);
+    padding: 0.8rem;
+    font-size: 2rem;
+    font-weight: 300;
+  }
+}

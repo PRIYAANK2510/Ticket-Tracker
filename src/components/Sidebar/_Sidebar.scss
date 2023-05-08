@@ -1,0 +1,38 @@
+nav {
+  background-color: hsl(190, 50%, 8%);
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & .Tboards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    & .Tboard {
+      padding: 0.6rem;
+      color: white;
+      text-align: center;
+      text-transform: capitalize;
+      border-radius: 1rem;
+      cursor: pointer;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  & .addBoard {
+    padding: 0.6rem;
+    color: white;
+    background-color: #4683b450;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 1rem;
+    cursor: pointer;
+    &:active {
+      transform: scale(0.9);
+    }
+    &:hover {
+      filter: brightness(2);
+    }
+  }
+}

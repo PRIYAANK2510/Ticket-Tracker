@@ -1,0 +1,11 @@
+.App {
+  background-color: hsl(190, 50%, 25%);
+  min-height: 100vh;
+  display: flex;
+  & nav {
+    width: 266px;
+  }
+  & main {
+    flex: auto;
+  }
+}

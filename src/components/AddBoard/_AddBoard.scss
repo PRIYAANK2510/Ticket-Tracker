@@ -1,0 +1,55 @@
+.addBoardPage {
+  position: absolute;
+  inset: 0;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boardForm {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  gap: 1.5rem;
+  background-color: hsl(190, 50%, 15%);
+  & label {
+    display: none;
+  }
+  & input {
+    padding: 0.7rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: hsl(190, 20%, 40%);
+    color: hsl(190, 20%, 70%);
+    &:focus {
+      outline: 3px solid hsl(190, 20%, 70%);
+    }
+    &::placeholder {
+      color: hsl(190, 10%, 25%);
+    }
+  }
+  & .buttonboard {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    & .submitboard {
+      padding: 0.6rem;
+      border-radius: 1rem;
+      background-color: hsl(120, 45%, 45%);
+    }
+    & .cancelboard {
+      padding: 0.6rem;
+      border-radius: 1rem;
+      background-color: hsl(0, 45%, 45%);
+    }
+    & button {
+      border: none;
+      cursor: pointer;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
