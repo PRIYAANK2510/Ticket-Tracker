@@ -8,6 +8,7 @@ const AddBoard = ({ setIsBoardFormActive, createNewBoard }) => {
   return (
     <div className='addBoardPage'>
       <div className='boardForm'>
+        <h1>Add Board</h1>
         <div>
           <label htmlFor='bname'>Board Name</label>
           <input
