@@ -1,3 +1,4 @@
+import { TiDelete } from 'react-icons/ti';
 const Sidebar = ({ boards, setIsBoardFormActive, updateActiveBoard }) => {
   return (
     <nav>
@@ -12,6 +13,7 @@ const Sidebar = ({ boards, setIsBoardFormActive, updateActiveBoard }) => {
             }}
           >
             <p>{board.bname}</p>
+            <TiDelete className='delBicon' />
           </div>
         ))}
       </div>
