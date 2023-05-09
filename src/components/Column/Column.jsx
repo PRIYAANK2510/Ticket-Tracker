@@ -1,16 +1,15 @@
+import Card from '../Card/Card';
+
 const Column = ({ column, tasks }) => {
   return (
     <div className='box'>
       <h2>{column.title}</h2>
       <div className='section'>
         {tasks.map((task, index) => (
-          <div
-            className='card'
+          <Card
             key={`card${index}`}
-          >
-            <h1>{task.ttitle}</h1>
-            <p>{task.tdescription}</p>
-          </div>
+            task={task}
+          />
         ))}
       </div>
     </div>

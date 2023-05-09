@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import { addBoard } from '../services/addBoard';
 import { addTask } from '../services/addTask';
 import { initialBoard } from '../services/initialBoard';
+
 const Home = () => {
   const [boards, setBoards] = useState(initialBoard);
   const [activeIndex, setActiveIndex] = useState(1);
