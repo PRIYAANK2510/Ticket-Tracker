@@ -13,6 +13,7 @@ const Home = () => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isBoardFormActive, setIsBoardFormActive] = useState(false);
   const [isTaskFormActive, setIsTaskFormActive] = useState(false);
+
   //Create New Board
   const createNewBoard = (obj) => {
     const tempObj = addBoard(obj, boards);
@@ -22,6 +23,7 @@ const Home = () => {
     setIsBoardFormActive(false);
     setActiveIndex(boards[boards.length - 1].index + 1);
   };
+
   //Create New Task
   const createNewTask = (obj) => {
     const index = activeIndex;
@@ -42,12 +44,14 @@ const Home = () => {
         setIsBoardFormActive={setIsBoardFormActive}
         updateActiveBoard={updateActiveBoard}
       />
+      {/* Board Form */}
       {isBoardFormActive && (
         <AddBoard
           setIsBoardFormActive={setIsBoardFormActive}
           createNewBoard={createNewBoard}
         />
       )}
+      {/* Task Form */}
       {isTaskFormActive && (
         <AddTask
           setIsTaskFormActive={setIsTaskFormActive}
