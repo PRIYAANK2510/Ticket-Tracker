@@ -1,7 +1,11 @@
 export const addBoard = (obj, boards) => {
+  let i = 1;
+  if (boards.length !== 0) {
+    i = boards[boards.length - 1].index + 1;
+  }
   const tempObj = {
     ...obj,
-    index: boards[boards.length - 1].index + 1,
+    index: i,
     data: {
       tasks: {},
       columns: {

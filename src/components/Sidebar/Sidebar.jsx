@@ -1,5 +1,5 @@
 import { TiDelete } from 'react-icons/ti';
-const Sidebar = ({ boards, setIsBoardFormActive, updateActiveBoard }) => {
+const Sidebar = ({ boards, setIsBoardFormActive, updateActiveBoard, deleteIxBoard }) => {
   return (
     <nav>
       <div className='Tboards'>
@@ -8,12 +8,18 @@ const Sidebar = ({ boards, setIsBoardFormActive, updateActiveBoard }) => {
             key={`TB${index}`}
             className='Tboard'
             style={{ backgroundColor: `${board.bcolor}` }}
-            onClick={() => {
-              updateActiveBoard(board);
-            }}
           >
-            <p>{board.bname}</p>
-            <TiDelete className='delBicon' />
+            <p
+              onClick={() => {
+                updateActiveBoard(board);
+              }}
+            >
+              {board.bname}
+            </p>
+            <TiDelete
+              className='delBicon'
+              onClick={() => deleteIxBoard(board.index)}
+            />
           </div>
         ))}
       </div>

@@ -3,11 +3,15 @@ const Header = ({ activeBoard, setIsTaskFormActive }) => {
   return (
     <header>
       <h1>{activeBoard.bname}</h1>
-      <MdAddTask
-        className='addTaskIcon'
-        onClick={() => setIsTaskFormActive(true)}
-      />
+      {activeBoard.index && (
+        <MdAddTask
+          className='addTaskIcon'
+          onClick={() => setIsTaskFormActive(true)}
+        />
+      )}
     </header>
   );
 };
 export default Header;
+
+Header.defaultProps = { activeBoard: { bname: 'Add Board' } };
