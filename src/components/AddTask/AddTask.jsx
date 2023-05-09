@@ -40,7 +40,7 @@ const AddTask = ({ setIsTaskFormActive, createNewTask }) => {
         <div className='buttonboard'>
           <button
             className='submittask'
-            onClick={createNewTask}
+            onClick={() => createNewTask(inputObj)}
           >
             Add Task
           </button>
