@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AddBoard from '../components/AddBoard/AddBoard';
+import AddTask from '../components/AddTask/AddTask';
 import BoardSection from '../components/BoardSection/BoardSection';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
@@ -30,20 +31,28 @@ const Home = () => {
   ]);
   const [activeBoard, setActiveBoard] = useState(boards[0]);
   const [isBoardFormActive, setIsBoardFormActive] = useState(false);
+  const [isTaskFormActive, setIsTaskFormActive] = useState(false);
   const createNewBoard = (obj) => {
     const tempObj = {
       ...obj,
       data: {
-        todo: [],
-        wip: [],
-        inReview: [],
-        done: [],
+        tasks: {},
+        columns: {
+          'column-1': { id: 'column-1', title: 'To-Do', taskIds: [] },
+          'column-2': { id: 'column-2', title: 'Work in Progress', taskIds: [] },
+          'column-3': { id: 'column-3', title: 'In Review', taskIds: [] },
+          'column-4': { id: 'column-4', title: 'Done', taskIds: [] },
+        },
+        columnOrder: ['column-1', 'column-2', 'column-3', 'column-4'],
       },
     };
     setBoards((prev) => {
       return [...prev, tempObj];
     });
     setIsBoardFormActive(false);
+  };
+  const createNewTask = () => {
+    console.log('hhohho');
   };
 
   const updateActiveBoard = (obj) => {
@@ -63,8 +72,17 @@ const Home = () => {
           createNewBoard={createNewBoard}
         />
       )}
+      {isTaskFormActive && (
+        <AddTask
+          setIsTaskFormActive={setIsTaskFormActive}
+          createNewTask={createNewTask}
+        />
+      )}
       <main>
-        <Header activeBoard={activeBoard} />
+        <Header
+          activeBoard={activeBoard}
+          setIsTaskFormActive={setIsTaskFormActive}
+        />
         <BoardSection activeBoardData={activeBoard.data} />
       </main>
     </div>
