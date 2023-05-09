@@ -22,7 +22,11 @@ const Home = () => {
       return [...prev, tempObj];
     });
     setIsBoardFormActive(false);
-    setActiveIndex(boards[boards.length - 1].index + 1);
+    let i = 1;
+    if (boards.length !== 0) {
+      i = boards[boards.length - 1].index + 1;
+    }
+    setActiveIndex(i);
   };
 
   //Create New Task
@@ -43,9 +47,10 @@ const Home = () => {
     const newB = deleteBoard(index, boards);
     if (newB.length === 0) {
       setBoards([]);
+    } else {
+      setActiveIndex(newB[0].index);
+      setBoards(newB);
     }
-    setActiveIndex(newB[0].index);
-    setBoards(newB);
   };
 
   return (

@@ -6,7 +6,6 @@ const BoardSection = ({ activeBoardData }) => {
       {activeBoardData.columnOrder.map((columnId) => {
         const column = activeBoardData.columns[columnId];
         const tasks = column.taskIds.map((taskId) => activeBoardData.tasks[taskId]);
-        console.log(tasks);
 
         return (
           <Column
