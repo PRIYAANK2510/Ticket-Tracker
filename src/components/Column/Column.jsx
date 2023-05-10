@@ -13,7 +13,10 @@ const Column = ({
       <h2>{column.title}</h2>
       <div
         className='section'
-        onDragOver={() => handleInitialFinal({ final: column.id })}
+        onDragOver={(e) => {
+          e.preventDefault();
+          handleInitialFinal({ final: column.id });
+        }}
       >
         {tasks.map((task, index) => (
           <Card
