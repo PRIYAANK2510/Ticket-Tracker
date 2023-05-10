@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-const EditTask = ({ isEditFormActive, activeBoardData, setIsEditFormActive }) => {
+const EditTask = ({
+  isEditFormActive,
+  activeBoardData,
+  setIsEditFormActive,
+  editIxTask,
+}) => {
   const [editObj, setEditObj] = useState({
     ttitle: activeBoardData.tasks[isEditFormActive].ttitle,
     tdescription: activeBoardData.tasks[isEditFormActive].tdescription,
@@ -38,9 +43,7 @@ const EditTask = ({ isEditFormActive, activeBoardData, setIsEditFormActive }) =>
         <div className='ebuttonboard'>
           <button
             className='edittask'
-            onClick={() => {
-              console.log('editting');
-            }}
+            onClick={() => editIxTask(isEditFormActive, editObj)}
           >
             Edit Task
           </button>

@@ -9,6 +9,7 @@ import { addBoard } from '../services/addBoard';
 import { addTask } from '../services/addTask';
 import { deleteBoard } from '../services/deleteBoard';
 import { deleteTask } from '../services/deleteTask';
+import { editTask } from '../services/editTask';
 import { initialBoard } from '../services/initialBoard';
 
 const Home = () => {
@@ -59,8 +60,14 @@ const Home = () => {
   //Delete the Task
   const deleteIxTask = (id) => {
     const newB = deleteTask(id, activeIndex, boards);
-    console.log(newB);
     setBoards(newB);
+  };
+
+  //Edit The Task
+  const editIxTask = (id, editObj) => {
+    const newB = editTask(id, activeIndex, boards, editObj);
+    setBoards(newB);
+    setIsEditFormActive(0);
   };
 
   return (
@@ -95,6 +102,7 @@ const Home = () => {
             })[0].data
           }
           setIsEditFormActive={setIsEditFormActive}
+          editIxTask={editIxTask}
         />
       )}
       <main>
