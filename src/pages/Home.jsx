@@ -18,7 +18,11 @@ const Home = () => {
       ? JSON.parse(localStorage.getItem('boards'))
       : initialBoard
   );
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(
+    localStorage.getItem('activeIndex')
+      ? JSON.parse(localStorage.getItem('activeIndex'))
+      : 1
+  );
   const [isBoardFormActive, setIsBoardFormActive] = useState(false);
   const [isTaskFormActive, setIsTaskFormActive] = useState(false);
   const [isEditFormActive, setIsEditFormActive] = useState(0);
@@ -26,6 +30,9 @@ const Home = () => {
   useEffect(() => {
     localStorage.setItem('boards', JSON.stringify(boards));
   }, [boards]);
+  useEffect(() => {
+    localStorage.setItem('activeIndex', JSON.stringify(activeIndex));
+  }, [activeIndex]);
 
   //Create New Board
   const createNewBoard = (obj) => {
