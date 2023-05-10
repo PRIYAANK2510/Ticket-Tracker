@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddBoard from '../components/AddBoard/AddBoard';
 import AddTask from '../components/AddTask/AddTask';
 import BoardSection from '../components/BoardSection/BoardSection';
@@ -13,11 +13,19 @@ import { editTask } from '../services/editTask';
 import { initialBoard } from '../services/initialBoard';
 
 const Home = () => {
-  const [boards, setBoards] = useState(initialBoard);
+  const [boards, setBoards] = useState(
+    localStorage.getItem('boards')
+      ? JSON.parse(localStorage.getItem('boards'))
+      : initialBoard
+  );
   const [activeIndex, setActiveIndex] = useState(1);
   const [isBoardFormActive, setIsBoardFormActive] = useState(false);
   const [isTaskFormActive, setIsTaskFormActive] = useState(false);
   const [isEditFormActive, setIsEditFormActive] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem('boards', JSON.stringify(boards));
+  }, [boards]);
 
   //Create New Board
   const createNewBoard = (obj) => {
