@@ -1,7 +1,19 @@
 import { RxCross2 } from 'react-icons/rx';
-const Card = ({ task, deleteIxTask, setIsEditFormActive }) => {
+const Card = ({
+  task,
+  deleteIxTask,
+  colindex,
+  setIsEditFormActive,
+  handleInitialFinal,
+  handledragEnd,
+}) => {
   return (
-    <div className='card'>
+    <div
+      className='card'
+      draggable
+      onDragStart={() => handleInitialFinal({ initial: colindex, tskId: task.id })}
+      onDragEnd={handledragEnd}
+    >
       <div
         className='carddata'
         onClick={() => setIsEditFormActive(task.id)}

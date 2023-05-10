@@ -9,6 +9,7 @@ import { addBoard } from '../services/addBoard';
 import { addTask } from '../services/addTask';
 import { deleteBoard } from '../services/deleteBoard';
 import { deleteTask } from '../services/deleteTask';
+import { dragdrop } from '../services/dragdrop';
 import { editTask } from '../services/editTask';
 import { initialBoard } from '../services/initialBoard';
 
@@ -26,6 +27,11 @@ const Home = () => {
   const [isBoardFormActive, setIsBoardFormActive] = useState(false);
   const [isTaskFormActive, setIsTaskFormActive] = useState(false);
   const [isEditFormActive, setIsEditFormActive] = useState(0);
+  const [initialFianl, setInitialFinal] = useState({
+    initial: 'column-1',
+    final: 'column-1',
+    tskId: 1,
+  });
 
   useEffect(() => {
     localStorage.setItem('boards', JSON.stringify(boards));
@@ -33,6 +39,22 @@ const Home = () => {
   useEffect(() => {
     localStorage.setItem('activeIndex', JSON.stringify(activeIndex));
   }, [activeIndex]);
+
+  const handleInitialFinal = (obj) => {
+    setInitialFinal({ ...initialFianl, ...obj });
+  };
+
+  const handledragEnd = () => {
+    const newB = dragdrop(
+      initialFianl.initial,
+      initialFianl.final,
+      initialFianl.tskId,
+      boards,
+      activeIndex
+    );
+    console.log(newB);
+    setBoards(newB);
+  };
 
   //Create New Board
   const createNewBoard = (obj) => {
@@ -138,6 +160,8 @@ const Home = () => {
             }
             deleteIxTask={deleteIxTask}
             setIsEditFormActive={setIsEditFormActive}
+            handleInitialFinal={handleInitialFinal}
+            handledragEnd={handledragEnd}
           />
         )}
       </main>
