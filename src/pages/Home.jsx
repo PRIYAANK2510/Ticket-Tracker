@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AddBoard from '../components/AddBoard/AddBoard';
 import AddTask from '../components/AddTask/AddTask';
 import BoardSection from '../components/BoardSection/BoardSection';
+import EditTask from '../components/EditTask/EditTask';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import { addBoard } from '../services/addBoard';
@@ -15,6 +16,7 @@ const Home = () => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isBoardFormActive, setIsBoardFormActive] = useState(false);
   const [isTaskFormActive, setIsTaskFormActive] = useState(false);
+  const [isEditFormActive, setIsEditFormActive] = useState(0);
 
   //Create New Board
   const createNewBoard = (obj) => {
@@ -83,6 +85,18 @@ const Home = () => {
           createNewTask={createNewTask}
         />
       )}
+      {/* Edit Form */}
+      {isEditFormActive !== 0 && (
+        <EditTask
+          isEditFormActive={isEditFormActive}
+          activeBoardData={
+            boards.filter((board) => {
+              return board.index === activeIndex;
+            })[0].data
+          }
+          setIsEditFormActive={setIsEditFormActive}
+        />
+      )}
       <main>
         <Header
           activeBoard={
@@ -100,6 +114,7 @@ const Home = () => {
               })[0].data
             }
             deleteIxTask={deleteIxTask}
+            setIsEditFormActive={setIsEditFormActive}
           />
         )}
       </main>

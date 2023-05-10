@@ -1,6 +1,6 @@
 import Card from '../Card/Card';
 
-const Column = ({ column, tasks, deleteIxTask }) => {
+const Column = ({ column, tasks, deleteIxTask, setIsEditFormActive }) => {
   return (
     <div className='box'>
       <h2>{column.title}</h2>
@@ -10,6 +10,7 @@ const Column = ({ column, tasks, deleteIxTask }) => {
             key={`card${index}`}
             task={task}
             deleteIxTask={deleteIxTask}
+            setIsEditFormActive={setIsEditFormActive}
           />
         ))}
       </div>

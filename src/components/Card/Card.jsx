@@ -1,8 +1,11 @@
 import { RxCross2 } from 'react-icons/rx';
-const Card = ({ task, deleteIxTask }) => {
+const Card = ({ task, deleteIxTask, setIsEditFormActive }) => {
   return (
     <div className='card'>
-      <div className='carddata'>
+      <div
+        className='carddata'
+        onClick={() => setIsEditFormActive(task.id)}
+      >
         <h1>{task.ttitle}</h1>
         <p>{task.tdescription}</p>
       </div>
