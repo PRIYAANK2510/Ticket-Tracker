@@ -1,6 +1,6 @@
 import Column from '../Column/Column';
 
-const BoardSection = ({ activeBoardData }) => {
+const BoardSection = ({ activeBoardData, deleteIxTask }) => {
   return (
     <div className='container'>
       {activeBoardData.columnOrder.map((columnId) => {
@@ -12,6 +12,7 @@ const BoardSection = ({ activeBoardData }) => {
             key={column.id}
             column={column}
             tasks={tasks}
+            deleteIxTask={deleteIxTask}
           />
         );
       })}

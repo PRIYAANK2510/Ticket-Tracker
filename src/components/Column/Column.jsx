@@ -1,6 +1,6 @@
 import Card from '../Card/Card';
 
-const Column = ({ column, tasks }) => {
+const Column = ({ column, tasks, deleteIxTask }) => {
   return (
     <div className='box'>
       <h2>{column.title}</h2>
@@ -9,6 +9,7 @@ const Column = ({ column, tasks }) => {
           <Card
             key={`card${index}`}
             task={task}
+            deleteIxTask={deleteIxTask}
           />
         ))}
       </div>

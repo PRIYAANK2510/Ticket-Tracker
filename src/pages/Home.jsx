@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import { addBoard } from '../services/addBoard';
 import { addTask } from '../services/addTask';
 import { deleteBoard } from '../services/deleteBoard';
+import { deleteTask } from '../services/deleteTask';
 import { initialBoard } from '../services/initialBoard';
 
 const Home = () => {
@@ -53,6 +54,13 @@ const Home = () => {
     }
   };
 
+  //Delete the Task
+  const deleteIxTask = (id) => {
+    const newB = deleteTask(id, activeIndex, boards);
+    console.log(newB);
+    setBoards(newB);
+  };
+
   return (
     <div className='App'>
       <Sidebar
@@ -84,7 +92,6 @@ const Home = () => {
           }
           setIsTaskFormActive={setIsTaskFormActive}
         />
-
         {boards.length !== 0 && (
           <BoardSection
             activeBoardData={
@@ -92,6 +99,7 @@ const Home = () => {
                 return board.index === activeIndex;
               })[0].data
             }
+            deleteIxTask={deleteIxTask}
           />
         )}
       </main>
