@@ -3,7 +3,7 @@ export const addTask = (obj, index, boards) => {
     if (board.index === index) {
       const bkeys = Object.keys(board.data.tasks);
       const lastindex = bkeys.length - 1;
-      let newIndex = 0;
+      let newIndex = 1;
       if (lastindex >= 0) {
         const lastkey = bkeys[lastindex];
         newIndex = parseInt(board.data.tasks[lastkey].id) + 1;
